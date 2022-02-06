@@ -30,7 +30,7 @@ public class ProdutoController {
     }
 
     @ApiOperation(value = "Retorna um produto especificado pelo id.")
-    @GetMapping("/produto/{id}")
+    @GetMapping("/produtos/{id}")
     public ResponseEntity<Produto> buscarProdutoId(@PathVariable(value = "id") long id) {
         Produto produto = produtoRepository.findById(id);
 
@@ -42,14 +42,14 @@ public class ProdutoController {
     }
 
     @ApiOperation(value = "Adiciona um produto na tabela.")
-    @PostMapping("/produto")
+    @PostMapping("/produtos")
     @ResponseStatus(HttpStatus.CREATED)
     public Produto addProduto(@Valid @RequestBody Produto produto) {
         return this.produtoRepository.save(produto);
     }
 
     @ApiOperation(value = "Atualiza os valores de um produto.")
-    @PutMapping("/produto/{id}")
+    @PutMapping("/produtos/{id}")
     public ResponseEntity<Produto> atualizarProduto(@PathVariable long id, @Valid @RequestBody Produto produto) {
         Produto existente = produtoRepository.findById(id);
 
@@ -66,7 +66,7 @@ public class ProdutoController {
     }
 
     @ApiOperation(value = "Deleta um produto especificado pelo id.")
-    @DeleteMapping("/produto/{id}")
+    @DeleteMapping("/produtos/{id}")
     public ResponseEntity<Void> deletarProdutoId(@PathVariable long id) {
         Produto produto = this.produtoRepository.findById(id);
 
